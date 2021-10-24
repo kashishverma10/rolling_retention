@@ -1,0 +1,124 @@
+####1. To create Rolling Retention Table :
+
+SELECT 
+  DISTINCT joining_day as day, 
+  COUNT(player_id) OVER (PARTITION BY joining_day) players_joined, 
+  SUM(retained) OVER (PARTITION BY joining_day) AS players_retained, 
+  SUM(retained) OVER (PARTITION BY joining_day) / COUNT(player_id) OVER (PARTITION BY joining_day) fractional_retention 
+FROM 
+  (
+    SELECT 
+      days_info.joining_day, 
+      days_info.player_id as player_id, 
+      CASE WHEN days_info.lastplay_day - days_info.joining_day > 30 THEN 1 ELSE 0 END AS retained 
+    FROM 
+      (
+        SELECT 
+          players.player_id, 
+          players.joined as joining_day, 
+          lastplay.lastplay_day 
+        FROM 
+          `junobigqueryclass.game_data.player_info` players 
+          JOIN (
+            SELECT 
+              player_id as player_lastday, 
+              MAX(day) as lastplay_day 
+            FROM 
+              `junobigqueryclass.game_data.matches_info` 
+            GROUP BY 
+              1
+          ) as lastplay ON players.player_id = lastplay.player_lastday
+      ) as days_info
+  ) 
+ORDER BY 
+  1
+
+####2. Do players with rolling 30-day retention spend more? Answer query :
+
+SELECT 
+  player_status, 
+  SUM(amount_spent) as total_spent 
+FROM 
+  (
+    SELECT 
+      * 
+    FROM 
+      (
+        SELECT 
+          player_id as pid, 
+          SUM(price) as amount_spent 
+        FROM 
+          `junobigqueryclass.game_data.item_info` i 
+          JOIN `junobigqueryclass.game_data.purchase_info` p ON i.item_id = p.item_id 
+        GROUP BY 
+          1
+      ) AS player_spent 
+      JOIN (
+        SELECT 
+          days_info.player_id as player_id, 
+          CASE WHEN days_info.lastplay_day - days_info.joining_day > 30 THEN "retained" ELSE 'unretained' END AS player_status 
+        FROM 
+          (
+            SELECT 
+              players.player_id, 
+              players.joined as joining_day, 
+              lastplay.lastplay_day 
+            FROM 
+              `junobigqueryclass.game_data.player_info` players 
+              JOIN (
+                SELECT 
+                  player_id as player_lastday, 
+                  MAX(day) as lastplay_day 
+                FROM 
+                  `junobigqueryclass.game_data.matches_info` 
+                GROUP BY 
+                  1
+              ) as lastplay ON players.player_id = lastplay.player_lastday
+          ) as days_info
+      ) as player_status ON player_status.player_id = player_spent.pid
+  ) as table1 
+GROUP BY 
+  1 
+ORDER BY 
+  2 DESC
+
+
+####3. Do players with 30-day rolling retention tend to be from a certain location? Answer Query:
+
+SELECT 
+  location, 
+  COUNT(player_id) as total_retained_players 
+FROM 
+  (
+    SELECT 
+      days_info.joining_day, 
+      days_info.player_id as pid 
+    FROM 
+      (
+        SELECT 
+          players.player_id, 
+          players.joined as joining_day, 
+          lastplay.lastplay_day 
+        FROM 
+          `junobigqueryclass.game_data.player_info` players 
+          JOIN (
+            SELECT 
+              player_id as player_lastday, 
+              MAX(day) as lastplay_day 
+            FROM 
+              `junobigqueryclass.game_data.matches_info` 
+            GROUP BY 
+              1
+          ) as lastplay ON players.player_id = lastplay.player_lastday
+      ) as days_info 
+    WHERE 
+      days_info.lastplay_day - days_info.joining_day > 30
+  ) AS r_info 
+  JOIN `junobigqueryclass.game_data.player_info` as p_info ON p_info.player_id = r_info.pid 
+GROUP BY 
+  1 
+ORDER BY 
+  2 DESC
+
+
+
