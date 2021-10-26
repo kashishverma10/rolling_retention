@@ -98,7 +98,7 @@ We will create visualization graphs using Google Sheets to show the answer to th
 
 ![Location trend of Retained Players](locations.png "Location Data")
 
-[Map] (https://docs.google.com/spreadsheets/d/e/2PACX-1vQds7rdOcerXl_oG0XWF6HIQCmd9GEL-Ou2NvTJGzMhSkLRaTBnDn_F4FZib4qWaBm7ARLIWkGTbeQ9/pubchart?oid=1849877541&format=interactive)
+[Interactive Map](<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQds7rdOcerXl_oG0XWF6HIQCmd9GEL-Ou2NvTJGzMhSkLRaTBnDn_F4FZib4qWaBm7ARLIWkGTbeQ9/pubchart?oid=1849877541&amp;format=interactive"></iframe>)
 
 #### The data above shows that the most players with rolling 30-day retention come from **South America.**
 
