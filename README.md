@@ -82,6 +82,8 @@ We will create visualization graphs using Google Sheets to show the answer to th
 # **Visualization (using Google Sheets)**
 ---
 
+[Google Sheets Link](https://docs.google.com/spreadsheets/d/10MCRDouEEAVscNb4bRACSiwzqz_bMpQd1XwTzwrUwl4/edit?usp=sharing)
+
 ## Is 30-day rolling retention increasing or decreasing over the lifecycle of the game?
 
 ![30-day rolling retention over the lifecycle of the game shows a constant line](retentionrate_graph.png "Retention Rate over the ")
