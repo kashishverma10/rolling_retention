@@ -87,6 +87,7 @@ We will create visualization graphs using Google Sheets to show the answer to th
 ## Is 30-day rolling retention increasing or decreasing over the lifecycle of the game?
 
 ![30-day rolling retention over the lifecycle of the game shows a constant line](retentionrate_graph.png "Retention Rate over the ")
+[Interactive Graph](https://docs.google.com/spreadsheets/d/e/2PACX-1vQds7rdOcerXl_oG0XWF6HIQCmd9GEL-Ou2NvTJGzMhSkLRaTBnDn_F4FZib4qWaBm7ARLIWkGTbeQ9/pubchart?oid=573865852&format=interactive)
 
 #### The above graph shows that the retention rate is moving at an average rate of approximately 69%. The Second year data is not available yet, hence we can ignore the slight inclination of the trend line towards a downward trend because of a steep fall in the retention rate at the end. Also please note that the retention rate of the last 30 days of the year are not included in the graph above as our condition for rolling retention can not test for rolling retention of players within the last 30 days of the year as the data for the second year is not available yet. The stable retention rate also shows that we have a constant user churn rate of 31%, which means the playerbase that did not return after 30 days. To lower this churn rate we can use different opt-in technicques to remind the unretained users of the game, to do so we can use push notification alerts and offering them with game items or time-limited offers.
 
