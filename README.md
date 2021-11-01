@@ -5,7 +5,9 @@ ___
 
 ## **Purpose of the Project**
 ___
-The purpose of this project is to analyze a relational database of a mobile gaming company using complex SQL queries. The data is to be aggregated and then utilized to create a visualization using Google sheets. This game has a store where players can buy a vast array of different items. Matches are composed of two players going head-to-head against each other. We have four tables as part of our dataset:
+The purpose of this project is to analyze a relational database of a mobile gaming company that compeleted one year anniversary using SQL queries to find out rolling retention rate and user churn rate. The data is to be aggregated and then utilized to create a visualization using Google sheets. 
+
+This game has a store where players can buy a vast array of different items. Matches are composed of two players going head-to-head against each other. We have four tables as part of our dataset:
 
 - Match information, including the players who matched against each other, and the outcome,
 - Player information, including information like the player's age and when they joined,
@@ -84,7 +86,7 @@ We will create visualization graphs using Google Sheets to show the answer to th
 
 ![30-day rolling retention over the lifecycle of the game shows a constant line](retentionrate_graph.png "Retention Rate over the ")
 
-#### The above graph shows that the retention rate is moving at an average rate of approximately 70%. The Second year data is not available yet, hence we can ignore the slight inclination of the trend line towards a downward trend because of a steep fall in the retention rate at the end. Also please note that the retention rate of the last 30 days of the year are not included in the graph above as our condition for rolling retention can not test for rolling retention of players within the last 30 days of the year as the data for the second year is not available yet.
+#### The above graph shows that the retention rate is moving at an average rate of approximately 69%. The Second year data is not available yet, hence we can ignore the slight inclination of the trend line towards a downward trend because of a steep fall in the retention rate at the end. Also please note that the retention rate of the last 30 days of the year are not included in the graph above as our condition for rolling retention can not test for rolling retention of players within the last 30 days of the year as the data for the second year is not available yet. The stable retention rate also shows that we have a constant user churn rate of 31%, which means the playerbase that did not return after 30 days. To lower this churn rate we can use different opt-in technicques to remind the unretained users of the game, to do so we can use push notification alerts and offering them with game items or time-limited offers.
 
 
 ## Do players with rolling 30-day retention spend more?
