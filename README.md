@@ -34,7 +34,7 @@ player_id|	location|	age|	system |	joined
 ---------|-----------|-----------|-------|---
 49d65bd7b1bd4d398e4bb67fe6fb6082 |	Asia|	8|	Linux|	104
 
-##### 4. **player_info**
+##### 4. **purchase_info**
 
 player_id |	item_id |	day
 ---------|-----------|-----------
